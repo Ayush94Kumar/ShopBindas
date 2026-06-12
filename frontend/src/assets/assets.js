@@ -53,6 +53,11 @@ import p_img49 from './p_img49.png'
 import p_img50 from './p_img50.png'
 import p_img51 from './p_img51.png'
 import p_img52 from './p_img52.png'
+import p_img53_1 from './p_img53_1.png'
+import p_img53_2 from './p_img53_2.png'
+import p_img53_3 from './p_img53_3.png'
+import p_img53_4 from './p_img53_4.png'
+
 
 
 import company_logo from './company_logo.png'
@@ -115,7 +120,7 @@ export const products = [
         name: "Men Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 900,
-        image: [p_img2_1,p_img2_2,p_img2_3,p_img2_4],
+        image: [p_img2_1, p_img2_2, p_img2_3, p_img2_4],
         category: "Men",
         subCategory: "Topwear",
         sizes: ["M", "L", "XL"],
@@ -720,6 +725,18 @@ export const products = [
         sizes: ["S", "M", "L", "XL"],
         date: 1716668445448,
         bestseller: false
-    }
+    },
+       {
+        _id: "aabac",
+        name: "Men Tailored Fit Dark Grey Suit Jacket",
+        description: "A sophisticated dark grey pinstripe blazer featuring a classic notch lapel and a tailored fit, perfect for formal occasions and evening wear.",
+        price: 8500,
+        image: [p_img53_1,p_img53_2,p_img53_3,p_img53_4],
+        category: "Men",
+        subCategory: "Formalwear",
+        sizes: ["S", "M", "L", "XL"],
+        date: 1781283221000,
+        bestseller: true
+    },
 
 ]

@@ -9,11 +9,11 @@ const Home_front = () => {
         <div className='text-[#414141]'>
             <div className='flex items-center gap-2'>
                 <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
-                <p className='font-sans text-sm md:text-base'>OUR BESTSELLERS</p>
+                <p className='font-serif text-sm md:text-base'>OUR BESTSELLERS</p>
             </div>
           <h1 class="font-serif text-3xl sm:py-3 lg:text-5xl leading-relaxed">Latest Arrivals</h1>
           <div className='flex items-center gap-2'>
-            <p className='font-mono text-sm md:text-base'>Shop Now</p>
+            <p className='font-serif text-sm md:text-base'>Shop Now</p>
             <p className='w-8 md:w-11 h-[1px] bg-[#414141]'></p>
           </div>
         </div>
