@@ -3,6 +3,7 @@ import Home_front from '../components/Home_front'
 import LatestCollection from '../components/LatestCollection'
 import BestSeller from '../components/BestSeller'
 import OurPolicy from '../components/OurPolicy'
+import Offer from '../components/Offer'
 const Home = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const Home = () => {
       <LatestCollection/>
       <BestSeller/>
       <OurPolicy/>
+      <Offer/>
     </div>
   )
 }
