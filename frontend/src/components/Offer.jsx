@@ -9,8 +9,8 @@ const Offer = () => {
   return (
     <div className='text-center'>
     <p className='text-2xl font-medium font-serif text-gray-900'>Subscribe now & get20% off</p>
-    <p className='text-gray-400 mt-3'>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet enim nam debitis, accusantium pariatur magni maiores ratione doloribus inventore, tenetur ullam illo dolorem nemo reprehenderit, ipsam vel qui velit quam.
+    <p className='text-gray-600 mt-3'>
+            Subscribe today and enjoy exclusive offers, early access to new products, and exciting shopping rewards.
     </p>
     <form  onSubmit={onSubmitHandler} className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border pl-3'>
         <input className='w-full sm:flex-1 outline-none' type="email" placeholder='Enter your Email' required />
