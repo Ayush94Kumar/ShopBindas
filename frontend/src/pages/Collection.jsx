@@ -5,20 +5,27 @@ import Title from '../components/Title'
 import ProductItem from '../components/ProductItem';
 
 const Collection = () => {
+  // Fetch the master product list from global state (Context)
   const { products } = useContext(ShopContext);
+  // State to hold the final products that will be displayed on screen
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  const [sortType, setSortType] = useState('relavent')
+
+  // Toggles selected categories in the state array
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
+      // Remove if already selected
       setCategory(prev => prev.filter(item => item !== e.target.value))
     }
     else {
+      // Add if newly selected
       setCategory(prev => [...prev, e.target.value])
     }
   }
-
+// Toggles selected subcategories in the state array
   const toggleSubCategory = (e) => {
     if (subCategory.includes(e.target.value)) {
       setSubCategory(prev => prev.filter(item => item !== e.target.value))
@@ -27,27 +34,47 @@ const Collection = () => {
       setSubCategory(prev => [...prev, e.target.value])
     }
   }
-
+// Applies the selected category and subcategory filters
   const applyFilter = () => {
+    // Make a shallow copy of the master list to avoid mutating original data
     let productsCopy = products.slice();
     if (category.length > 0) {
+      // Keep only products whose category matches the selected ones
       productsCopy = productsCopy.filter(item => category.includes(item.category));
     }
     if (subCategory.length > 0) {
+      // Keep only products whose subCategory matches the selected ones
       productsCopy = productsCopy.filter(item => subCategory.includes(item.subCategory));
     }
-
+// Update screen with filtered products
     setFilterProducts(productsCopy)
   }
-
-  useEffect(() => {
-    setFilterProducts(products);
-  }, [])
-
-
+// Sorts the currently filtered products
+  const sortProduct = () => {
+    let fpCopy = filterProducts.slice();
+    switch (sortType) {
+      case 'low-high':
+        // Sort ascending by price
+        setFilterProducts(fpCopy.sort((a, b) => (a.price - b.price)));
+        break;
+      case 'high-low':
+        // Sort descending by price
+        setFilterProducts(fpCopy.sort((a, b) => (b.price - a.price)));
+        break;
+      default:
+        // Re-apply standard filter if "Relevant" is chosen
+        applyFilter();
+        break;
+    }
+  }
+// Automatically re-run the filter logic whenever a user checks/unchecks a box
   useEffect(() => {
     applyFilter();
   }, [category, subCategory])
+// Automatically re-sort the displayed products whenever the dropdown changes
+  useEffect(() => {
+    sortProduct();
+  }, [sortType])
 
   return (
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t border-gray-400'>
@@ -84,7 +111,7 @@ const Collection = () => {
             <p className='flex gap-2 font-serif'>
               <input type="checkbox" className='w-3' value={'Winterwear'} onChange={toggleSubCategory} />WinterWear
             </p>
-             <p className='flex gap-2 font-serif'>
+            <p className='flex gap-2 font-serif'>
               <input type="checkbox" className='w-3' value={'Formalwear'} onChange={toggleSubCategory} />Formalwear
             </p>
           </div>
@@ -95,7 +122,7 @@ const Collection = () => {
         <div className='flex justify-between text-base sm:text-2xl mb-4'>
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
           {/* Actual filter of products */}
-          <select className='border-2 border-gray-400 text-sm px-2 font-serif cursor-pointer'>
+          <select onChange={(e) => setSortType(e.target.value)} className='border-2 border-gray-400 text-sm px-2 font-serif cursor-pointer'>
             <option value="relevent">Sort by: Relavent</option>
             <option value="low-high">Price:Low-High</option>
             <option value="high-low">Price:High-Low</option>
