@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
@@ -30,18 +31,8 @@ const Navbar = () => {
                 </NavLink>
             </ul>
             <div className='flex items-center gap-6'>
-                {/* --- YouTube Style Search Bar --- */}
-                {/* Visible on larger screens, hidden on mobile */}
-                <div className='hidden sm:flex items-center border border-gray-600 rounded-full overflow-hidden'>
-                    <input 
-                        type="text" 
-                        placeholder="Search" 
-                        className='px-4 py-1.5 w-48 md:w-64 lg:w-80 outline-none text-sm'
-                    />
-                    <button className='px-4 py-2 bg-gray-300 border-l border-gray-300 hover:bg-gray-400 transition-colors'>
-                        <img src={assets.search_icon} className='w-4 opacity-70' alt="search" />
-                    </button>
-                </div>
+                {/* 2. RENDER THE SEARCH BAR COMPONENT HERE */}
+               <SearchBar/>
 
                 {/* Mobile search icon (keeps the simple icon for small screens) */}
                 <img src={assets.search_icon} className='w-5 cursor-pointer sm:hidden' alt="search" />

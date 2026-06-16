@@ -6,7 +6,7 @@ import ProductItem from '../components/ProductItem';
 
 const Collection = () => {
   // Fetch the master product list from global state (Context)
-  const { products } = useContext(ShopContext);
+  const { products,search } = useContext(ShopContext);
   // State to hold the final products that will be displayed on screen
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
@@ -38,6 +38,12 @@ const Collection = () => {
   const applyFilter = () => {
     // Make a shallow copy of the master list to avoid mutating original data
     let productsCopy = products.slice();
+    // 2. ADD THIS SEARCH LOGIC BLOCK
+    if (search) {
+      productsCopy = productsCopy.filter(item => 
+        item.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
     if (category.length > 0) {
       // Keep only products whose category matches the selected ones
       productsCopy = productsCopy.filter(item => category.includes(item.category));
@@ -70,7 +76,7 @@ const Collection = () => {
 // Automatically re-run the filter logic whenever a user checks/unchecks a box
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory])
+  }, [category, subCategory,search])
 // Automatically re-sort the displayed products whenever the dropdown changes
   useEffect(() => {
     sortProduct();
