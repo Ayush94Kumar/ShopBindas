@@ -30,7 +30,22 @@ const Navbar = () => {
                 </NavLink>
             </ul>
             <div className='flex items-center gap-6'>
-                <img src={assets.search_icon} className='w-5 cursor-pointer' alt="search" />
+                {/* --- YouTube Style Search Bar --- */}
+                {/* Visible on larger screens, hidden on mobile */}
+                <div className='hidden sm:flex items-center border border-gray-600 rounded-full overflow-hidden'>
+                    <input 
+                        type="text" 
+                        placeholder="Search" 
+                        className='px-4 py-1.5 w-48 md:w-64 lg:w-80 outline-none text-sm'
+                    />
+                    <button className='px-4 py-2 bg-gray-300 border-l border-gray-300 hover:bg-gray-400 transition-colors'>
+                        <img src={assets.search_icon} className='w-4 opacity-70' alt="search" />
+                    </button>
+                </div>
+
+                {/* Mobile search icon (keeps the simple icon for small screens) */}
+                <img src={assets.search_icon} className='w-5 cursor-pointer sm:hidden' alt="search" />
+                {/* --------------------------------- */}
                 <div className='group relative'>
                     <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="profile" />
                     <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
