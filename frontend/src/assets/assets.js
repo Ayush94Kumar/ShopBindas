@@ -57,6 +57,11 @@ import p_img53_1 from './p_img53_1.png'
 import p_img53_2 from './p_img53_2.png'
 import p_img53_3 from './p_img53_3.png'
 import p_img53_4 from './p_img53_4.png'
+import p_img54_1 from './p_img54_1.png'
+import p_img54_2 from './p_img54_2.png'
+import p_img54_3 from './p_img54_3.png'
+import p_img54_4 from './p_img54_4.png'
+
 
 
 
@@ -739,5 +744,16 @@ export const products = [
         date: 1781283221000,
         bestseller: true
     },
-
+    {
+    _id: "aabad",
+    name: "Men Tailored Fit Olive Green Double-Breasted Suit Jacket",
+    description: "A striking olive green double-breasted blazer featuring sharp peak lapels, dark contrasting buttons, and a tailored fit, perfect for making a stylish statement at formal events and evening occasions.",
+    price: 9900,
+    image: [p_img54_1,p_img54_2,p_img54_3,p_img54_4],
+    category: "Men",
+    subCategory: "Formalwear",
+    sizes: ["S", "M", "L", "XL"],
+    date: 1781283300000,
+    bestseller: true
+}
 ]

@@ -1,11 +1,13 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { useNavigate } from 'react-router-dom' 
 
 const Home_front = () => {
+  const navigate = useNavigate();
   return (
     <div className='flex flex-col sm:flex-row border border-gray-400 '>
       {/* left */}
-      <img className='w-full sm:w-1/2' src={assets.hero_img} alt="hero" />
+      <img onClick={() => navigate('/product/aabad')} className='w-full sm:w-1/2 cursor-pointer' src={assets.hero_img} alt="hero" />
       {/* right */}
       <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
         <div className='text-[#414141]'>
