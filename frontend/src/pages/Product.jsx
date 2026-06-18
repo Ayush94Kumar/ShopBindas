@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
+import RelatedProduct from '../components/RelatedProduct';
 
 const Product = () => {
   const { productId } = useParams();
@@ -88,12 +89,14 @@ const Product = () => {
             {/* more information about product */}
             <hr className='mt-8 sm:w-4/5'/>
             <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
-              <p className='font-serif text-gray-600'>100% Original Product made by ShopBindash</p>
-              <p className='font-serif text-gray-600'>Cash on Delivery is available on this product</p>
-              <p className='font-serif text-gray-600'>Return and excahnge within 7 days provided by ShopBindas </p>
+              <p className='font-serif text-gray-600'>100% Original Product made by ShopBindash.</p>
+              <p className='font-serif text-gray-600'>Cash on Delivery is available on this product.</p>
+              <p className='font-serif text-gray-600'>Return and excahnge within 7 days provided by ShopBindas.</p>
             </div>
         </div>
       </div>
+      {/* related product */}
+       <RelatedProduct category={productData.category} subCategory={productData.subCategory}/>
     </div>
   ) : <div className='opacity-0'></div>
 }
