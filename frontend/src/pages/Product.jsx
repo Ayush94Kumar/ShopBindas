@@ -8,7 +8,7 @@ const Product = () => {
   const { productId } = useParams();
 
   // Fetches the master list of all products and the currency symbol
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency,addToCart } = useContext(ShopContext);
   // LOCAL COMPONENT STATE:
   // productData: Stores all the details of the single product we want to show.
   const [productData, setProductData] = useState(false);
@@ -84,7 +84,7 @@ const Product = () => {
                 ))}
               </div>
             </div>
-            <button className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700 font-serif cursor-pointer'>ADD TO CART</button>
+            <button  onClick={()=>addToCart(productData._id,size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700 font-serif cursor-pointer'>ADD TO CART</button>
 
             {/* more information about product */}
             <hr className='mt-8 sm:w-4/5'/>
