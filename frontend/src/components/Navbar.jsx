@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink,useNavigate } from 'react-router-dom'
 import SearchBar from './SearchBar';
 import { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
-    const {getCartCount}= useContext(ShopContext);
+    const { getCartCount,setShowSearch } = useContext(ShopContext);
+    const navigate = useNavigate(); // Initialize navigate
 
     return (
         <div className='flex items-center justify-between py-5 font medium'>
             <Link to={'/'}> <div className="flex items-center gap-0">
-                <img src={assets.company_logo} className="w-12 " alt="company_Logo"/>
-                <img src={assets.logo} className="w-36"alt="Logo"/>
+                <img src={assets.company_logo} className="w-12 " alt="company_Logo" />
+                <img src={assets.logo} className="w-36" alt="Logo" />
             </div></Link>
-            
+
             <ul className='hidden sm:flex gap-5 text-sm text-gray-700 font-serif'>
                 <NavLink to='/' className='flex flex-col items-center gap-1'>
                     <p>Home</p>
@@ -36,10 +37,13 @@ const Navbar = () => {
             </ul>
             <div className='flex items-center gap-6'>
                 {/* 2. RENDER THE SEARCH BAR COMPONENT HERE */}
-               <SearchBar/>
+                <SearchBar />
 
                 {/* Mobile search icon (keeps the simple icon for small screens) */}
-                <img src={assets.search_icon} className='w-5 cursor-pointer sm:hidden' alt="search" />
+                <img onClick={() => {
+                    setShowSearch(true);
+                    navigate('/collection');
+                }} src={assets.search_icon} className='w-5 cursor-pointer sm:hidden' alt="search" />
                 {/* --------------------------------- */}
                 <div className='group relative'>
                     <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="profile" />

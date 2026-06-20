@@ -48,10 +48,6 @@ const ShopContextProvider = (props) => {
         return totalCount;
     }
 
-    useEffect(() => {
-        console.log(cartItems);
-
-    }, [cartItems])
 
     const value = {
         products, currency, delivery_fee,
