@@ -5,7 +5,7 @@ export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
     const currency = '₹';
-    const delivery_fee = 40;
+    const delivery_fee = 90;
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
@@ -47,12 +47,17 @@ const ShopContextProvider = (props) => {
         }
         return totalCount;
     }
-
+ 
+    const updateQuantity =async (itemId,size,quantity) =>{
+        let cartData=structuredClone(cartItems);
+        cartData[itemId][size]=quantity;
+        setCartItems(cartData);
+    }
 
     const value = {
         products, currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
-        cartItems, addToCart, getCartCount
+        cartItems, addToCart, getCartCount,updateQuantity
     }
     return (
         <ShopContext.Provider value={value}>
