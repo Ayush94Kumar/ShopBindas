@@ -5,7 +5,7 @@ import { assets } from '../assets/assets';
 import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
-     const {products,currency, cartItems,updateQuantity}=useContext(ShopContext);
+     const {products,currency, cartItems,updateQuantity,navigate}=useContext(ShopContext);
      // 2. Local state to store the transformed, flat array of cart items
      const [cartData,setCartData] = useState([]);
 
@@ -66,7 +66,7 @@ const Cart = () => {
             <div className='w-full sm:w-[450px]'>
               <CartTotal/>
               <div className='w-full text-end'>
-                <button className='bg-black text-white text-sm my-8 px-8 py-3 cursor-pointer font-serif'>PROCEED TO ORDER</button>
+                <button onClick={()=>navigate('./placeorder')} className='bg-black text-white text-sm my-8 px-8 py-3 cursor-pointer font-serif'>PROCEED TO ORDER</button>
               </div>
             </div>
           </div>
