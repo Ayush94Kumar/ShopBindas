@@ -80,7 +80,7 @@ const Navbar = () => {
                     </div>
                     <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border cursor-pointer' to='/'>Home</NavLink>
                     <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border cursor-pointer' to='/collection'>Collection</NavLink>
-                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border cursor-pointer' to='/cotact'>Contact</NavLink>
+                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border cursor-pointer' to='/contact'>Contact</NavLink>
                     <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border cursor-pointer' to='/about'>About</NavLink>
                 </div>
             </div>
