@@ -8,6 +8,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   // Add this line. Replace 'shopbindas' with your exact GitHub repository name
   base: '/ShopBindas/', 
+    server :{port:5173}
+
 })
 // export default defineConfig({
 //   plugins: [tailwindcss()],
