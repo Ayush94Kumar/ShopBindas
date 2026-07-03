@@ -35,7 +35,7 @@ const RelatedProduct = ({category,subCategory}) => {
             {
                 // Iterate over the 'related' array and render a ProductItem component for each one
                 related.map((item,index)=>(
-                    <ProductItem key={index} id={item._id} name={item.name} price={item.price} image={item.image}/>
+                    <ProductItem key={index} id={item._id} name={item.name} price={item.price} images={item.images}/>
                 ))
             }
 

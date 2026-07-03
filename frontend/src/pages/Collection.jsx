@@ -76,7 +76,7 @@ const Collection = () => {
 // Automatically re-run the filter logic whenever a user checks/unchecks a box
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory,search])
+  }, [category, subCategory,search,products])
 // Automatically re-sort the displayed products whenever the dropdown changes
   useEffect(() => {
     sortProduct();
@@ -138,7 +138,7 @@ const Collection = () => {
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
           {
             filterProducts.map((item, index) => (
-              <ProductItem key={index} name={item.name} id={item._id} price={item.price} image={item.image} />
+              <ProductItem key={index} name={item.name} id={item._id} price={item.price} images={item.images} />
             ))
           }
         </div>

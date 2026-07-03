@@ -16,7 +16,7 @@ const BestSeller = () => {
         // Take only the first 10 items from that filtered list and save them to our state
         setBestSeller(bestProduct.slice(0, 10));
         //The empty array [] means this filtering logic only runs once when the component first appears.
-    }, [])
+    }, [products])
     return (
         <div className='my-10'>
             <div className='text-center text-3xl py-8'>
@@ -29,7 +29,7 @@ const BestSeller = () => {
                 {
                     // using map to access the product
                     bestSeller.map((item, index) => (
-                        <ProductItem key={index} id={item._id} name={item.name} image={item.image} price={item.price} />
+                        <ProductItem key={index} id={item._id} name={item.name} images={item.images} price={item.price} />
                     ))
                 }
             </div>

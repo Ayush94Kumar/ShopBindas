@@ -79,7 +79,7 @@ const Add = ({token}) => {
             <img className='w-20' src={!image2 ? assets.upload_area : URL.createObjectURL(image2)} alt='' />
             <input onChange={(e) => setImage2(e.target.files[0])} type='file' id="image2" hidden />
           </label>
-          <label htmlFor="image4">
+          <label htmlFor="image3">
             <img className='w-20' src={!image3 ? assets.upload_area : URL.createObjectURL(image3)} alt='' />
             <input onChange={(e) => setImage3(e.target.files[0])} type='file' id="image3" hidden />
           </label>

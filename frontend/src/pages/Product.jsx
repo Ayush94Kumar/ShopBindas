@@ -23,7 +23,7 @@ const Product = () => {
     products.map((item) => {
       if (item._id === productId) {
         setProductData(item);
-        setImage(item.image[0]);
+        setImage(item.images[0]);
         return null;
       }
     })
@@ -33,7 +33,7 @@ const Product = () => {
   // or whenever the productId in the URL changes.
   useEffect(() => {
     fetchProductData();
-  }, [productId])
+  }, [productId,products])
 
   return productData ? (
     <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
@@ -46,7 +46,7 @@ const Product = () => {
           {/* Fix: Moved the closing </div> tag to wrap the mapped images */}
           <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full'>
             {
-              productData.image.map((item, index) => (
+              productData.images.map((item, index) => (
                 <img 
                   onClick={() => setImage(item)} /* Fix: Added onClick to make thumbnails work */
                   src={item} 
