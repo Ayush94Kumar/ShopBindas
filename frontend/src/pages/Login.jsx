@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
   // Manages the current form view, toggling between 'Login' and 'Sign UP' modes
-  const [currentState, setCurrentState] = useState('Sign Up');
+  const [currentState, setCurrentState] = useState('Login');
   const { token, setToken, navigate, backendURL } = useContext(ShopContext);
 
   const [name, setName] = useState('');
@@ -16,6 +16,7 @@ const Login = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
+            // Register a new user
       if (currentState === 'Sign Up') {
         const response = await axios.post(backendURL + '/api/user/register', { name, email, password })
         if (response.data.success) {
@@ -25,7 +26,9 @@ const Login = () => {
         else {
           toast.error(response.data.message);
         }
-      } else {
+      }
+            // Login an existing user
+      else {
         const response = await axios.post(backendURL + '/api/user/login', { email, password });
         if (response.data.success) {
           setToken(response.data.token);
@@ -41,7 +44,7 @@ const Login = () => {
       toast.error(error.message);
     }
   }
-
+  // Redirect the user to the home page after successful authentication
   useEffect(()=>{
     if(token)
     {
