@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const Home_front = () => {
   const navigate = useNavigate();
   return (
-    <div onClick={() => navigate('/product/aabad')} className='flex flex-col sm:flex-row border border-gray-400 cursor-pointer'>
+    <div onClick={() => navigate('/product/6a48cfff4032c4c0f734eb8b')} className='flex flex-col sm:flex-row border border-gray-400 cursor-pointer'>
       {/* left */}
       <img  className='w-full sm:w-1/2 ' src={assets.hero_img} alt="hero" />
       {/* right */}
