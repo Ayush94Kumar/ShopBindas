@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import connectCloudinary from './config/cloudinary.js';
 import userRouter from './routes/userRoute.js';
 import productRouter from './routes/productRoute.js';
+import cartRouter from './routes/cartRoute.js';
 
 //App config
 dotenv.config();
@@ -23,7 +24,8 @@ app.use(cors());
 
 //Api endpoint
 app.use('/api/user', userRouter);
-app.use('/api/product', productRouter)
+app.use('/api/product', productRouter);
+app.use('/api/cart',cartRouter);
 
 app.get('/', (req, res) => {
     res.send("Server stared !!");
