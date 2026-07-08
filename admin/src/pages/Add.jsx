@@ -5,13 +5,13 @@ import { backendURL } from '../App';
 import { toast } from 'react-toastify';
 
 // The component accepts 'token' as a prop, which is used for authenticating the API request
-const Add = ({token}) => {
-// Storing the selected image files.
+const Add = ({ token }) => {
+  // Storing the selected image files.
   const [image1, setImage1] = useState(false);
   const [image2, setImage2] = useState(false);
   const [image3, setImage3] = useState(false);
   const [image4, setImage4] = useState(false);
-// Storing standard text and boolean inputs for the product details
+  // Storing standard text and boolean inputs for the product details
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -21,7 +21,7 @@ const Add = ({token}) => {
   // Storing selected sizes as an array (e.g., ["S", "M", "XL"])
   const [sizes, setSizes] = useState([]);
 
-// This function runs when the user clicks the "ADD" button
+  // This function runs when the user clicks the "ADD" button
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -43,9 +43,8 @@ const Add = ({token}) => {
 
       //MAKING THE API CALL
       // Sending a POST request to the backend. We pass 'token' in the headers for authentication.
-      const response =await axios.post(backendURL + "/api/product/add", formData,{headers:{token}})
-      if(response.data.success)
-      {
+      const response = await axios.post(backendURL + "/api/product/add", formData, { headers: { token } })
+      if (response.data.success) {
         toast.success(response.data.message)
         setName('')
         setDescription('')
@@ -55,14 +54,14 @@ const Add = ({token}) => {
         setImage4(false)
         setPrice('')
       }
-      else{
+      else {
         toast.error(response.data.message)
       }
 
     } catch (error) {
       console.log(error);
       toast.error(error.message)
-      
+
     }
   }
 
@@ -110,10 +109,10 @@ const Add = ({token}) => {
         <div>
           <p className='mb-2'>Product SubCategory</p>
           <select onChange={(e) => setSubCategory(e.target.value)} className='w-full px-3 py-2' >
-            <option value="Topwear">Topwear</option>
-            <option value="Bottomwear">BottomWear</option>
+            <option value="TopWear">Topwear</option>
+            <option value="BottomWear">BottomWear</option>
             <option value="WinterWear">WinterWear</option>
-            <option value="Formalwear">FormalWear</option>
+            <option value="FormalWear">FormalWear</option>
           </select>
         </div>
         <div>
