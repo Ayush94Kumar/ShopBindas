@@ -42,7 +42,9 @@ const placeOrder = async (req, res) => {
 //place order using  stripe method
 const placeOrderStripe = async (req, res) => {
     try {
+        // Get order details from frontend request
         const { userId, items, amount, address } = req.body;
+        // Get frontend URL to redirect after payment
         const { origin } = req.headers;
         // Create a new order object
         const orderData = {
@@ -57,18 +59,20 @@ const placeOrderStripe = async (req, res) => {
         // Save the order in the database
         const newOrder = new orderModel(orderData);
         await newOrder.save()
-
+        // Convert each cart item into Stripe's required line_items format
         const line_items = items.map((item) => ({
             price_data: {
                 currency: currency,
                 product_data: {
                     name: item.name
                 },
+                // Stripe expects amount in the smallest currency unit
+                // (e.g., paise for INR, cents for USD)
                 unit_amount: item.price * 100
             },
             quantity: item.quantity
         }))
-
+        // Add delivery charge as a separate item
         line_items.push({
             price_data: {
                 currency: currency,
@@ -79,12 +83,15 @@ const placeOrderStripe = async (req, res) => {
             },
             quantity: 1
         })
+         // Create a Stripe Checkout Session
+        // Stripe generates a hosted payment page using these details
         const session = await stripe.checkout.sessions.create({
             success_url: `${origin}/verify?success=true&orderID=${newOrder._id}`,
             cancel_url: `${origin}/verify?success=false&orderID=${newOrder._id}`,
             line_items,
             mode: 'payment'
         })
+                // Send Stripe Checkout URL to frontend
         res.json({ success: true, session_url: session.url })
 
     } catch (error) {
@@ -93,19 +100,23 @@ const placeOrderStripe = async (req, res) => {
     }
 }
 
-//verify stripe payment
-const verifyStripe = async (req,res) =>{
-    const {orderId,success,userId}=req.body;
+// Verify Stripe payment after redirect from Checkout page
+const verifyStripe = async (req, res) => {
+    const { orderId, success, userId } = req.body;
     try {
-        if(success==='true')
-        {
-            await orderModel.findByIdAndUpdate(orderId,{payment:true});
-            await userModel.findByIdAndUpdate(userId,{cartData:{}});
-            res.json({success:true});
+        if (success === 'true') {
+                        // Mark order as paid
+            await orderModel.findByIdAndUpdate(orderId, { payment: true });
+                        // Clear user's cart after successful payment
+
+            await userModel.findByIdAndUpdate(userId, { cartData: {} });
+            res.json({ success: true });
         }
-        else{
+        else {
+               // If payment failed or user cancelled,
+            // remove the unpaid order from database
             await orderModel.findByIdAndDelete(orderId);
-            res.json({success:false})
+            res.json({ success: false })
         }
     } catch (error) {
         console.log(error);
@@ -154,7 +165,7 @@ const updateStatus = async (req, res) => {
     }
 }
 
-export { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateStatus ,verifyStripe}
+export { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateStatus, verifyStripe }
 
 
 
