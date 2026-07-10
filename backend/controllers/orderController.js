@@ -86,8 +86,8 @@ const placeOrderStripe = async (req, res) => {
          // Create a Stripe Checkout Session
         // Stripe generates a hosted payment page using these details
         const session = await stripe.checkout.sessions.create({
-            success_url: `${origin}/verify?success=true&orderID=${newOrder._id}`,
-            cancel_url: `${origin}/verify?success=false&orderID=${newOrder._id}`,
+            success_url: `${origin}/verify?success=true&orderId=${newOrder._id}`,
+            cancel_url: `${origin}/verify?success=false&orderId=${newOrder._id}`,
             line_items,
             mode: 'payment'
         })
