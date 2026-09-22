@@ -1,3 +1,4 @@
+#Live:- https://ayush94kumar.github.io/ShopBindas/
 # ShopBindas
 #### ShopBindas is a comprehensive, full-stack e-commerce platform built using the MERN stack. The project features a customer-facing storefront, a robust RESTful backend API, and a dedicated administrative dashboard for seamless inventory and order management.
 #### Designed with a clean MVC (Model-View-Controller) architectural pattern, the application ensures high scalability and maintainability across its distinct services.
